@@ -1,0 +1,86 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions  >
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        
+        <ListBox BorderBrush="Black"  x:Name="lbContent" Grid.Row="1" Grid.Column="1"
+                 Margin="5" Padding="5"
+                 >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Image  Source=""
+                               Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"
+                               Margin="5" 
+                               />
+
+                        <TextBlock Text="{Binding Name}" Grid.Column="1" 
+                                   Grid.Row="0" Margin="5" />
+
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="1" Grid.Column="1"
+                                    Margin="5"
+                                    >
+                            <TextBlock Background="Red" Margin="5" Text="{Binding Cost1}"/>
+                            <TextBlock Margin="5" Text="{Binding Cost2}" />
+                            <TextBlock Margin="5" Text="{Binding Time}"/>
+                        </StackPanel>
+
+                        <TextBlock   Text="{Binding CostString }" Margin="5" Grid.Column="1"
+                                   Grid.Row="2"/>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="5" Grid.Row="3" Grid.Column="1">
+
+                            <Button x:Name="btChange" Content="Редактировать"
+                                    Margin="5" Padding="5"
+                                    Visibility="{Binding btChange}"
+                                    Click="btChange_Click"
+                                    />
+                            
+                            <Button x:Name="btDell" Content="Удалить"
+                                    Margin="5" Padding="5"
+                                    Visibility="{Binding btDell}"
+                                    Click="btDell_Click"
+                                    />
+
+                            <Button x:Name="btWriteClient" Content="Записать клиента"
+                                    Margin="5" Padding="5"
+                                     Visibility="{Binding btWrite}"
+                                    />
+
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
