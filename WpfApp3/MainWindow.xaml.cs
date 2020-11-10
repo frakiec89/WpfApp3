@@ -20,13 +20,15 @@ namespace WpfApp3
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ServisController servisController;
+
         public MainWindow()
         {
             InitializeComponent();
 
             try
             {
-                ServisController servisController = new ServisController();
+                servisController = new ServisController();
                 lbContent.ItemsSource = servisController.ServisWs;
             }
             catch
@@ -52,9 +54,14 @@ namespace WpfApp3
 
             ServisW servis = button.DataContext as ServisW;
 
-
             MessageBox.Show(servis.Name);
 
+        }
+
+        private void UpName_Click(object sender, RoutedEventArgs e)
+        {
+            servisController.ServisWs=   servisController.ServisWs.OrderBy(x => x.Name).ToList();
+            lbContent.ItemsSource = servisController.ServisWs;
         }
     }
 }
